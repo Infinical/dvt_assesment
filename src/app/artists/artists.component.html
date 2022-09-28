@@ -1,0 +1,16 @@
+
+<div >
+  <div>
+    <nz-statistic [nzValue]="(noOfAlbums | number)!" [nzTitle]="'No of Albums'"></nz-statistic>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-3">
+    <div *ngFor="let artist of artists">
+      <nz-card nzHoverable class="shadow-lg" [nzCover]="coverTemplate" (click)="onClick(artist)">
+        <nz-card-meta nzTitle="{{artist.artist.name}}" nzDescription="Rank: {{artist.rank}}"></nz-card-meta>
+      </nz-card>
+      <ng-template #coverTemplate>
+        <img alt="example" src="{{artist.artist.picture}}" />
+      </ng-template>
+    </div>
+  </div>
+</div>

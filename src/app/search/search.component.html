@@ -1,0 +1,14 @@
+
+    <nz-spin [nzSpinning]="isSpinning">
+        <div class="py-3">
+            <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                <input type="text" nz-input placeholder="Search Artist" [(ngModel)]="searchString" />
+            </nz-input-group>
+            <ng-template #suffixButton>
+                <button nz-button nzType="primary" nzSize="large" nzSearch (click)="search()">Search</button>
+            </ng-template>
+        </div>
+    </nz-spin>
+
+      
+
