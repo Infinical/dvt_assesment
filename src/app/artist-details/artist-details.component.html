@@ -6,17 +6,17 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 pt-3">
     <div >
-        <img class="w-3/4" src="{{details.artist.picture}}" alt="" srcset="">
+        <img class="w-3/4" src="{{artistDetails?.picture}}" alt="" srcset="">
         <nz-card class=" w-3/4 py-2"  >
-            <p>{{details.artist.name}}</p>
-            <p>{{details.rank}}</p>
+            <p>{{artistDetails?.name}}</p>
+            <p>{{artistDetails?.nb_fan}} Fans</p>
           </nz-card>
     </div>
     
     <div>
         <ol nz-list  nzBordered nzSize="large">
             <nz-list-header class="text-lg font-bold">Top Tracks</nz-list-header>
-            <li nz-list-item  nzNoFlex="true" *ngFor="let song of songDetails.data">
+            <li nz-list-item  nzNoFlex="true" *ngFor="let song of songDetails?.data">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                        {{song.title_short}}
@@ -39,9 +39,9 @@
     </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 pt-3">
-           <div *ngFor="let album of albumDetails.data">
+           <div *ngFor="let album of albumDetails?.data">
             <nz-card nzHoverable class="shadow-lg" [nzCover]="coverTemplate">
-                <nz-card-meta nzTitle="{{album.title}}" nzDescription="Rank: {{album.id}}"></nz-card-meta>
+                <nz-card-meta nzTitle="{{album.title}}" nzDescription="Release Date: {{album.release_date}}"></nz-card-meta>
               </nz-card>
               <ng-template #coverTemplate>
                 <img alt="example" src="{{album.cover}}" />

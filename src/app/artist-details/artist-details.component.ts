@@ -10,8 +10,10 @@ import { ArtistsService } from '../api/artists.service';
 })
 export class ArtistDetailsComponent implements OnInit {
   details!: any;
-  songDetails! :any;
+  songDetails!: any;
   albumDetails!: any;
+  artistDetails!: any;
+
   constructor(private router: Router, private artistsService: ArtistsService) {}
 
   ngOnInit(): void {
@@ -21,17 +23,19 @@ export class ArtistDetailsComponent implements OnInit {
       this.router.navigateByUrl('');
     }
 
-    this.getData()
+    this.getData();
   }
 
-  getData(){
-    forkJoin([ this.artistsService.getTopSongs(this.details.artist.id),this.artistsService.getAlbums(this.details.artist.id)]).subscribe((data) => {
-      console.log(data)
-      this.songDetails = data[0]
-      this.albumDetails = data[1]
-    
-    })
+  getData() {
+    forkJoin([
+      this.artistsService.getTopSongs(this.details.artist.id),
+      this.artistsService.getAlbums(this.details.artist.id),
+      this.artistsService.getArtistDetails(this.details.artist.id),
+    ]).subscribe((data) => {
+      console.log(data);
+      this.songDetails = data[0];
+      this.albumDetails = data[1];
+      this.artistDetails = data[2];
+    });
   }
-
-
 }

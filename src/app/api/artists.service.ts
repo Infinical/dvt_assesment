@@ -32,6 +32,16 @@ export class ArtistsService {
         catchError(this.handleError));
   }
 
+  getArtistDetails(id: string): Observable<any>{
+    return this.http
+    .get<SearchResponse>(
+      `https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist/${id}`
+    )
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
+
   getTopSongs(id: string): Observable<any> {
     return this.http
       .get<SearchResponse>(
